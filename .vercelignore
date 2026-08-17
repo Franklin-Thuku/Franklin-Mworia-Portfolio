@@ -1,0 +1,2 @@
+# Ignore backend during Vercel deployment so it treats this as a pure static frontend project
+backend/
