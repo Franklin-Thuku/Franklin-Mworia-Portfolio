@@ -535,24 +535,32 @@
       position: relative;
       width: 100%;
       height: 360px;
-      background: #0d0d10;
+      background: #09090b;
       display: flex;
       align-items: center;
       justify-content: center;
       overflow: hidden;
     }
 
-    .profile-img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      filter: grayscale(100%) contrast(110%);
-      transition: filter var(--transition-medium), transform var(--transition-medium);
+    @keyframes dashFlow {
+      to {
+        stroke-dashoffset: -40;
+      }
     }
-
-    .profile-photo-card:hover .profile-img {
-      filter: grayscale(30%) contrast(105%);
-      transform: scale(1.02);
+    @keyframes dashFlowReverse {
+      to {
+        stroke-dashoffset: 40;
+      }
+    }
+    .node-group {
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), filter 0.3s ease;
+    }
+    .node-group:hover {
+      transform: scale(1.08);
+      filter: drop-shadow(0 0 8px rgba(255,255,255,0.4));
+    }
+    .node-group:hover circle {
+      stroke: #ffffff !important;
     }
 
     .profile-placeholder-box {
@@ -1726,27 +1734,79 @@
                 <span>STATUS: ONLINE</span>
               </div>
               
-              <div class="profile-image-container">
-                <img
-                  src="./profile.png"
-                  alt="Franklin Thuku — Software Engineer based in Juja, Kenya"
-                  class="profile-img"
-                  id="profilePhoto"
-                  onerror="this.style.display='none'; document.getElementById('profilePlaceholder').style.display='flex';"
-                />
-
-                <div class="profile-placeholder-box" id="profilePlaceholder">
-                  <div class="profile-placeholder-avatar">FT</div>
-                  <p style="font-size: 0.85rem; color: var(--text-primary); font-weight:600;">FRANKLIN THUKU</p>
-                  <p style="font-size: 0.72rem;">Add <code style="color:#ffffff; background:#222; padding:2px 6px; border-radius:2px;">profile.png</code> to the frontend folder.</p>
+              <div class="profile-image-container" style="background: #09090b; display: flex; flex-direction: column; justify-content: space-between; padding: 1.5rem; height: 360px; box-sizing: border-box; position: relative;">
+                <!-- Grid Overlay Background -->
+                <div style="position: absolute; inset: 0; background-image: radial-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(rgba(255,255,255,0.01) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.01) 1px, transparent 1px); background-size: 24px 24px, 12px 12px, 12px 12px; opacity: 0.8; pointer-events: none; z-index: 1;"></div>
+                
+                <!-- Header of Visualizer -->
+                <div style="display: flex; justify-content: space-between; align-items: center; z-index: 2; width: 100%; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 0.5rem; font-family: var(--font-mono); font-size: 0.68rem; color: var(--text-muted);">
+                  <div style="display: flex; align-items: center; gap: 0.5rem;">
+                    <span style="display: inline-block; width: 6px; height: 6px; border-radius: 50%; background-color: #22c55e; box-shadow: 0 0 8px rgba(34,197,94,0.6); animation: pulse 2.5s infinite;"></span>
+                    <span>CORE_ENGINE_TOPOLOGY</span>
+                  </div>
+                  <span>v2.1.0-STABLE</span>
                 </div>
 
-                <div class="profile-overlay-badge">
-                  <div>
-                    <div class="profile-badge-name">Franklin Thuku</div>
-                    <div class="profile-badge-loc">Software Engineer // Juja, Kenya</div>
+                <!-- SVG Interactive Network Diagram -->
+                <div style="flex-grow: 1; display: flex; align-items: center; justify-content: center; z-index: 2; position: relative; margin: 0.5rem 0; width: 100%; height: 180px;">
+                  <svg width="100%" height="100%" viewBox="0 0 320 180" style="overflow: visible;">
+                    <defs>
+                      <linearGradient id="lineGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#ffffff" stop-opacity="0.1"/>
+                        <stop offset="50%" stop-color="#ffffff" stop-opacity="0.6"/>
+                        <stop offset="100%" stop-color="#ffffff" stop-opacity="0.1"/>
+                      </linearGradient>
+                    </defs>
+
+                    <!-- Connecting Lines with flowing dasharray -->
+                    <path d="M 60,90 L 160,40" stroke="url(#lineGrad)" stroke-width="1.5" stroke-dasharray="6,6" style="animation: dashFlow 8s linear infinite;" />
+                    <path d="M 60,90 L 160,140" stroke="url(#lineGrad)" stroke-width="1.5" stroke-dasharray="6,6" style="animation: dashFlowReverse 8s linear infinite;" />
+                    <path d="M 160,40 L 260,90" stroke="url(#lineGrad)" stroke-width="1.5" stroke-dasharray="6,6" style="animation: dashFlow 8s linear infinite;" />
+                    <path d="M 160,140 L 260,90" stroke="url(#lineGrad)" stroke-width="1.5" stroke-dasharray="6,6" style="animation: dashFlowReverse 8s linear infinite;" />
+                    <path d="M 160,40 L 160,140" stroke="url(#lineGrad)" stroke-width="1" stroke-dasharray="4,4" />
+
+                    <!-- Nodes -->
+                    <!-- Node 1: API Gateway (Left) -->
+                    <g transform="translate(60, 90)" class="node-group">
+                      <circle r="22" fill="#09090b" stroke="#ffffff" stroke-width="1.5" />
+                      <circle r="16" fill="#121215" stroke="rgba(255,255,255,0.15)" stroke-width="1" />
+                      <text font-family="JetBrains Mono, monospace" font-size="8" fill="#ffffff" font-weight="bold" text-anchor="middle" dy="3">GATEWAY</text>
+                    </g>
+
+                    <!-- Node 2: FastAPI Core (Top Center) -->
+                    <g transform="translate(160, 40)" class="node-group">
+                      <circle r="24" fill="#09090b" stroke="#ffffff" stroke-width="2" />
+                      <circle r="18" fill="#121215" stroke="rgba(255,255,255,0.2)" stroke-width="1" />
+                      <text font-family="JetBrains Mono, monospace" font-size="8" fill="#ffffff" font-weight="bold" text-anchor="middle" dy="-1">FASTAPI</text>
+                      <text font-family="JetBrains Mono, monospace" font-size="6" fill="#a1a1aa" text-anchor="middle" dy="8">CORE</text>
+                    </g>
+
+                    <!-- Node 3: PostgreSQL (Bottom Center) -->
+                    <g transform="translate(160, 140)" class="node-group">
+                      <circle r="22" fill="#09090b" stroke="#ffffff" stroke-width="1.5" />
+                      <circle r="16" fill="#121215" stroke="rgba(255,255,255,0.15)" stroke-width="1" />
+                      <text font-family="JetBrains Mono, monospace" font-size="8" fill="#ffffff" font-weight="bold" text-anchor="middle" dy="3">POSTGRES</text>
+                    </g>
+
+                    <!-- Node 4: LLM / AI Orchestrator (Right) -->
+                    <g transform="translate(260, 90)" class="node-group">
+                      <circle r="22" fill="#09090b" stroke="#ffffff" stroke-width="1.5" />
+                      <circle r="16" fill="#121215" stroke="rgba(255,255,255,0.15)" stroke-width="1" />
+                      <text font-family="JetBrains Mono, monospace" font-size="8" fill="#ffffff" font-weight="bold" text-anchor="middle" dy="3">AI_AGENTS</text>
+                    </g>
+                  </svg>
+                </div>
+
+                <!-- Footer of Visualizer -->
+                <div style="z-index: 2; width: 100%; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 0.5rem; display: flex; flex-direction: column; gap: 0.25rem;">
+                  <div style="display: flex; justify-content: space-between; font-family: var(--font-mono); font-size: 0.68rem; color: var(--text-secondary);">
+                    <span>SYSTEM_LOAD: <b style="color: #ffffff;">0.08 // NOMINAL</b></span>
+                    <span>QPS: <b style="color: #ffffff;">482 req/s</b></span>
                   </div>
-                  <a href="#contact" class="copy-btn" style="font-size: 0.7rem;">Connect ↗</a>
+                  <div style="display: flex; justify-content: space-between; font-family: var(--font-mono); font-size: 0.68rem; color: var(--text-muted);">
+                    <span>MEM_POOL: 24.8MB / 128MB</span>
+                    <span style="color: #4ade80;">READY // ACTIVE_ROUTING</span>
+                  </div>
                 </div>
               </div>
             </div>
