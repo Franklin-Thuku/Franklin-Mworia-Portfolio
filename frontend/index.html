@@ -1,0 +1,2868 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Franklin Thuku — Software Engineer & Systems Builder | Juja, Kenya</title>
+  <meta name="description" content="Portfolio of Franklin Thuku, a Software Engineer & Computer Technology Student based in Juja, Kenya. Specializing in practical software solutions, high-throughput APIs, backend architecture, applied AI, and cybersecurity." />
+  
+  <!-- Favicon Emoji -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.88em%22 font-size=%2286%22 fill=%22%23ffffff%22>◈</text></svg>" />
+
+  <!-- Google Fonts: Sora (Display/Headings), Source Sans 3 (Body), JetBrains Mono (Code/Metadata) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Sora:wght@300;400;500;600;700;800&family=Source+Sans+3:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ==========================================================================
+       DESIGN SYSTEM: EDITORIAL DARK MONOCHROME
+       ========================================================================== */
+    :root {
+      /* Color Palette */
+      --bg-primary: #09090b;
+      --bg-secondary: #121215;
+      --bg-tertiary: #18181c;
+      --bg-card: #141417;
+      --bg-card-hover: #1c1c21;
+      
+      --border-subtle: #222226;
+      --border-medium: #323238;
+      --border-strong: #4f4f58;
+      --border-accent: #ffffff;
+      
+      --text-primary: #ffffff;
+      --text-secondary: #a1a1aa;
+      --text-muted: #71717a;
+      --text-inverse: #09090b;
+      
+      --accent-white: #ffffff;
+      --accent-silver: #e4e4e7;
+      --accent-tint: rgba(255, 255, 255, 0.08);
+      --accent-tint-hover: rgba(255, 255, 255, 0.14);
+      --accent-glow: rgba(255, 255, 255, 0.04);
+      
+      --status-active: #22c55e;
+      --status-active-glow: rgba(34, 197, 94, 0.25);
+
+      /* Typography */
+      --font-display: 'Sora', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --font-body: 'Source Sans 3', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+
+      /* Layout Spacing */
+      --container-max: 1360px;
+      --section-spacing: 120px;
+      --radius-sm: 2px;
+      --radius-md: 4px;
+      --radius-lg: 6px;
+      --radius-full: 9999px;
+      
+      /* Transitions */
+      --transition-fast: 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      --transition-medium: 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    /* CSS Reset */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      font-size: 16px;
+      scroll-behavior: smooth;
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+      font-family: var(--font-body);
+      font-weight: 400;
+      line-height: 1.65;
+      color: var(--text-primary);
+      background-color: var(--bg-primary);
+      overflow-x: hidden;
+    }
+
+    ::selection {
+      background: #ffffff;
+      color: #000000;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+      transition: color var(--transition-fast), border-color var(--transition-fast);
+    }
+
+    button, input, textarea, select {
+      font-family: inherit;
+      color: inherit;
+      background: none;
+      border: none;
+      outline: none;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* Utility Container */
+    .container {
+      width: 100%;
+      max-width: var(--container-max);
+      margin-left: auto;
+      margin-right: auto;
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+
+    /* Typography Hierarchy */
+    h1, h2, h3, h4, h5, h6 {
+      font-family: var(--font-display);
+      font-weight: 700;
+      line-height: 1.15;
+      letter-spacing: -0.03em;
+      color: var(--text-primary);
+    }
+
+    .editorial-label {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--text-muted);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .editorial-label::before {
+      content: '—';
+      color: var(--text-secondary);
+    }
+
+    .section-title {
+      font-size: clamp(2rem, 4vw, 3.25rem);
+      letter-spacing: -0.04em;
+      margin-top: 0.75rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .section-desc {
+      font-size: 1.125rem;
+      color: var(--text-secondary);
+      max-width: 680px;
+      line-height: 1.7;
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.65rem;
+      padding: 0.85rem 1.6rem;
+      font-family: var(--font-display);
+      font-size: 0.875rem;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      border-radius: var(--radius-sm);
+      transition: all var(--transition-medium);
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .btn-primary {
+      background-color: var(--accent-white);
+      color: var(--text-inverse);
+      border: 1px solid var(--accent-white);
+    }
+
+    .btn-primary:hover {
+      background-color: var(--accent-silver);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(255, 255, 255, 0.12);
+    }
+
+    .btn-secondary {
+      background-color: transparent;
+      color: var(--text-primary);
+      border: 1px solid var(--border-medium);
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--text-primary);
+      background-color: var(--accent-tint);
+      transform: translateY(-2px);
+    }
+
+    .btn-icon {
+      font-family: var(--font-mono);
+      font-size: 1rem;
+      transition: transform var(--transition-fast);
+    }
+
+    .btn:hover .btn-icon {
+      transform: translateX(3px);
+    }
+
+    /* ==========================================================================
+       HEADER & NAVIGATION
+       ========================================================================== */
+    .site-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background: rgba(9, 9, 11, 0.88);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
+    }
+
+    .brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .logo-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 34px;
+      height: 34px;
+      background: var(--bg-tertiary);
+      border: 1px solid var(--border-medium);
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      letter-spacing: 0.05em;
+    }
+
+    .logo-text {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 0.95rem;
+      letter-spacing: -0.02em;
+    }
+
+    .logo-sub {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-left: 0.25rem;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-link {
+      font-family: var(--font-display);
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      letter-spacing: -0.01em;
+      position: relative;
+      padding: 0.25rem 0;
+    }
+
+    .nav-link:hover {
+      color: var(--text-primary);
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0%;
+      height: 1px;
+      background: var(--text-primary);
+      transition: width var(--transition-medium);
+    }
+
+    .nav-link:hover::after {
+      width: 100%;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+    }
+
+    .api-status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.35rem 0.65rem;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      cursor: pointer;
+    }
+
+    .api-status-badge.connected {
+      border-color: rgba(34, 197, 94, 0.4);
+      color: #4ade80;
+    }
+
+    .status-indicator {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.4rem 0.85rem;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-full);
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--text-secondary);
+    }
+
+    .pulse-dot {
+      width: 6px;
+      height: 6px;
+      background-color: var(--status-active);
+      border-radius: 50%;
+      box-shadow: 0 0 8px var(--status-active-glow);
+      animation: pulse 2.5s infinite ease-in-out;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.85); }
+    }
+
+    .mobile-toggle {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      width: 36px;
+      height: 36px;
+      padding: 6px;
+    }
+
+    .mobile-toggle span {
+      display: block;
+      width: 100%;
+      height: 1.5px;
+      background-color: var(--text-primary);
+    }
+
+    /* Mobile Nav Overlay */
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 72px;
+      left: 0;
+      width: 100%;
+      height: calc(100vh - 72px);
+      background: rgba(9, 9, 11, 0.98);
+      backdrop-filter: blur(20px);
+      padding: 2.5rem 2rem;
+      border-top: 1px solid var(--border-subtle);
+      z-index: 999;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .mobile-menu.active {
+      display: flex;
+    }
+
+    .mobile-menu .nav-link {
+      font-size: 1.25rem;
+      padding: 0.5rem 0;
+    }
+
+    /* ==========================================================================
+       HERO SECTION WITH DEDICATED PROFILE PHOTO FRAME
+       ========================================================================== */
+    .hero-section {
+      padding-top: calc(72px + 5rem);
+      padding-bottom: 5.5rem;
+      position: relative;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.95fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    .hero-meta {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .hero-meta-badge {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      background: var(--bg-tertiary);
+      border: 1px solid var(--border-medium);
+      padding: 0.25rem 0.65rem;
+      color: var(--text-secondary);
+      border-radius: var(--radius-sm);
+    }
+
+    .hero-headline {
+      font-size: clamp(2.4rem, 5vw, 4.15rem);
+      font-weight: 800;
+      line-height: 1.08;
+      letter-spacing: -0.045em;
+      margin-bottom: 1.75rem;
+    }
+
+    .hero-headline span.highlight {
+      color: var(--text-secondary);
+      font-weight: 400;
+      font-style: italic;
+      font-family: var(--font-body);
+    }
+
+    .hero-subheadline {
+      font-size: clamp(1.05rem, 1.35vw, 1.25rem);
+      color: var(--text-secondary);
+      line-height: 1.7;
+      max-width: 640px;
+      margin-bottom: 2.25rem;
+    }
+
+    .hero-cta-group {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 3.5rem;
+    }
+
+    .hero-stats-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    .stat-card {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .stat-number {
+      font-family: var(--font-display);
+      font-size: 1.85rem;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      color: var(--text-primary);
+    }
+
+    .stat-label {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-top: 0.2rem;
+    }
+
+    /* Hero Right Column */
+    .hero-profile-column {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    /* DEDICATED PROFILE PHOTO CARD */
+    .profile-photo-card {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-medium);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+      position: relative;
+    }
+
+    .profile-card-header {
+      background: var(--bg-tertiary);
+      padding: 0.65rem 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--border-subtle);
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--text-muted);
+    }
+
+    .profile-image-container {
+      position: relative;
+      width: 100%;
+      height: 360px;
+      background: #0d0d10;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .profile-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: grayscale(100%) contrast(110%);
+      transition: filter var(--transition-medium), transform var(--transition-medium);
+    }
+
+    .profile-photo-card:hover .profile-img {
+      filter: grayscale(30%) contrast(105%);
+      transform: scale(1.02);
+    }
+
+    .profile-placeholder-box {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem;
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+      gap: 0.75rem;
+    }
+
+    .profile-placeholder-avatar {
+      width: 84px;
+      height: 84px;
+      border-radius: 50%;
+      border: 2px dashed var(--border-strong);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      color: var(--text-primary);
+      margin-bottom: 0.5rem;
+    }
+
+    .profile-overlay-badge {
+      position: absolute;
+      bottom: 1rem;
+      left: 1rem;
+      right: 1rem;
+      background: rgba(9, 9, 11, 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid var(--border-subtle);
+      padding: 0.85rem 1rem;
+      border-radius: var(--radius-sm);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .profile-badge-name {
+      font-family: var(--font-display);
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    .profile-badge-loc {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--text-muted);
+    }
+
+    /* Terminal Widget */
+    .terminal-window {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-medium);
+      border-radius: var(--radius-md);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .terminal-header {
+      background: var(--bg-tertiary);
+      padding: 0.65rem 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .terminal-dots {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .terminal-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background-color: var(--border-medium);
+    }
+
+    .terminal-title {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--text-muted);
+    }
+
+    .terminal-body {
+      padding: 1.25rem 1.5rem;
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      line-height: 1.65;
+    }
+
+    .term-log {
+      color: var(--text-secondary);
+    }
+
+    .term-line {
+      margin-bottom: 0.4rem;
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .term-prompt {
+      color: var(--text-muted);
+      user-select: none;
+    }
+
+    .term-cmd {
+      color: var(--text-primary);
+      font-weight: 500;
+    }
+
+    .term-out {
+      color: var(--text-secondary);
+      padding-left: 1.25rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .term-tag {
+      color: #ffffff;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 0.1rem 0.4rem;
+      border-radius: var(--radius-sm);
+    }
+
+    .terminal-quick-actions {
+      display: flex;
+      gap: 0.4rem;
+      flex-wrap: wrap;
+      margin-top: 0.75rem;
+      padding-top: 0.75rem;
+      border-top: 1px dashed var(--border-subtle);
+    }
+
+    .term-btn {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      background: var(--bg-tertiary);
+      border: 1px solid var(--border-subtle);
+      padding: 0.3rem 0.55rem;
+      border-radius: var(--radius-sm);
+      transition: all var(--transition-fast);
+    }
+
+    .term-btn:hover {
+      color: var(--text-primary);
+      border-color: var(--border-strong);
+      background: var(--bg-card-hover);
+    }
+
+    /* ==========================================================================
+       SECTION: ENGINEERING PHILOSOPHY (LEARN BY BUILDING)
+       ========================================================================== */
+    .philosophy-section {
+      padding: var(--section-spacing) 0;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .section-header-block {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 3.5rem;
+      flex-wrap: wrap;
+      gap: 2rem;
+    }
+
+    .philosophy-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+
+    .philosophy-card {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      padding: 2.5rem 2rem;
+      position: relative;
+      transition: transform var(--transition-medium), border-color var(--transition-medium);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .philosophy-card:hover {
+      border-color: var(--border-strong);
+      transform: translateY(-4px);
+    }
+
+    .card-num {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-bottom: 1.5rem;
+      display: block;
+    }
+
+    .card-title {
+      font-size: 1.35rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 1rem;
+      line-height: 1.3;
+    }
+
+    .card-body {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      line-height: 1.65;
+      margin-bottom: 1.75rem;
+      flex-grow: 1;
+    }
+
+    .card-footer-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      padding-top: 1.25rem;
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    .tech-pill {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      background: var(--bg-tertiary);
+      border: 1px solid var(--border-subtle);
+      padding: 0.2rem 0.55rem;
+      border-radius: var(--radius-sm);
+      color: var(--text-secondary);
+    }
+
+    /* ==========================================================================
+       SECTION: SELECTED CASE STUDIES & PROJECTS (DYNAMIC BACKEND INTEGRATION)
+       ========================================================================== */
+    .projects-section {
+      padding: var(--section-spacing) 0;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .project-filter-bar {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 3rem;
+      flex-wrap: wrap;
+    }
+
+    .filter-btn {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--text-secondary);
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-subtle);
+      padding: 0.5rem 1rem;
+      border-radius: var(--radius-sm);
+      transition: all var(--transition-fast);
+      letter-spacing: 0.05em;
+    }
+
+    .filter-btn:hover, .filter-btn.active {
+      color: var(--text-inverse);
+      background: var(--accent-white);
+      border-color: var(--accent-white);
+    }
+
+    .projects-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 3.5rem;
+      min-height: 400px;
+    }
+
+    .project-card {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      transition: border-color var(--transition-medium), box-shadow var(--transition-medium);
+    }
+
+    .project-card:hover {
+      border-color: var(--border-medium);
+      box-shadow: 0 24px 48px rgba(0, 0, 0, 0.4);
+    }
+
+    .project-content {
+      padding: 3rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .project-index {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1.5rem;
+    }
+
+    .project-serial {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      letter-spacing: 0.1em;
+    }
+
+    .project-category {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      padding: 0.2rem 0.5rem;
+      background: var(--bg-tertiary);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-secondary);
+      border-radius: var(--radius-sm);
+    }
+
+    .project-title {
+      font-size: 1.85rem;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      margin-bottom: 0.75rem;
+    }
+
+    .project-lead {
+      font-size: 1.05rem;
+      color: var(--text-secondary);
+      margin-bottom: 1.5rem;
+      line-height: 1.6;
+    }
+
+    .project-breakdown {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.25rem;
+      margin-bottom: 2rem;
+      padding: 1.25rem;
+      background: var(--bg-tertiary);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+    }
+
+    .metric-item {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .metric-val {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    .metric-desc {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .project-actions {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    /* Project Visual Blueprint Panel */
+    .project-preview {
+      background: var(--bg-tertiary);
+      border-left: 1px solid var(--border-subtle);
+      padding: 2.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .architecture-diagram {
+      background: var(--bg-primary);
+      border: 1px solid var(--border-medium);
+      border-radius: var(--radius-sm);
+      padding: 1.5rem;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      line-height: 1.6;
+    }
+
+    .diagram-header {
+      display: flex;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--border-subtle);
+      padding-bottom: 0.75rem;
+      margin-bottom: 1rem;
+      color: var(--text-muted);
+    }
+
+    .diagram-flow {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .flow-node {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-subtle);
+      padding: 0.6rem 0.85rem;
+      border-radius: var(--radius-sm);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .flow-node.highlighted {
+      border-color: var(--text-primary);
+      background: var(--bg-card-hover);
+    }
+
+    .flow-arrow {
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.75rem;
+    }
+
+    /* ==========================================================================
+       SECTION: TECHNICAL STACK & CORE CAPABILITIES
+       ========================================================================== */
+    .skills-section {
+      padding: var(--section-spacing) 0;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .skills-matrix {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+    }
+
+    .skill-column {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      padding: 2rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .skill-col-header {
+      margin-bottom: 1.5rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .skill-col-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    .skill-col-caption {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      margin-top: 0.25rem;
+    }
+
+    .skill-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+    }
+
+    .skill-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      padding: 0.4rem 0;
+      border-bottom: 1px dashed rgba(255, 255, 255, 0.05);
+    }
+
+    .skill-item:last-child {
+      border-bottom: none;
+    }
+
+    .skill-item .name {
+      font-weight: 500;
+      color: var(--text-primary);
+    }
+
+    .skill-item .level {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--text-muted);
+    }
+
+    /* ==========================================================================
+       SECTION: SERVICES & COLLABORATION TIERS
+       ========================================================================== */
+    .services-section {
+      padding: var(--section-spacing) 0;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+
+    .service-card {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      padding: 2.75rem 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform var(--transition-medium), border-color var(--transition-medium);
+    }
+
+    .service-card:hover {
+      border-color: var(--border-strong);
+      transform: translateY(-4px);
+    }
+
+    .service-card.featured {
+      border-color: var(--text-primary);
+      background: var(--bg-card);
+      position: relative;
+    }
+
+    .featured-badge {
+      position: absolute;
+      top: -12px;
+      right: 24px;
+      background: var(--accent-white);
+      color: var(--text-inverse);
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      font-weight: 700;
+      padding: 0.2rem 0.65rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      border-radius: var(--radius-sm);
+    }
+
+    .service-tier {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-bottom: 0.75rem;
+    }
+
+    .service-name {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      letter-spacing: -0.03em;
+    }
+
+    .service-desc {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      line-height: 1.65;
+      margin-bottom: 2rem;
+    }
+
+    .service-deliverables {
+      list-style: none;
+      margin-bottom: 2.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .deliverable-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.65rem;
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+    }
+
+    .deliverable-item::before {
+      content: '✓';
+      font-family: var(--font-mono);
+      color: var(--text-primary);
+      font-weight: 700;
+    }
+
+    /* ==========================================================================
+       SECTION: FAQ
+       ========================================================================== */
+    .faq-section {
+      padding: var(--section-spacing) 0;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .faq-layout {
+      display: grid;
+      grid-template-columns: 0.85fr 1.15fr;
+      gap: 4rem;
+    }
+
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .faq-item {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      transition: border-color var(--transition-fast);
+    }
+
+    .faq-item:hover {
+      border-color: var(--border-medium);
+    }
+
+    .faq-question {
+      width: 100%;
+      padding: 1.5rem 1.75rem;
+      text-align: left;
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      color: var(--text-primary);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .faq-toggle-icon {
+      font-family: var(--font-mono);
+      font-size: 1.1rem;
+      transition: transform var(--transition-medium);
+      color: var(--text-muted);
+    }
+
+    .faq-item.active .faq-toggle-icon {
+      transform: rotate(45deg);
+      color: var(--text-primary);
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height var(--transition-medium), padding var(--transition-medium);
+      padding: 0 1.75rem;
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      line-height: 1.7;
+    }
+
+    .faq-item.active .faq-answer {
+      max-height: 250px;
+      padding-bottom: 1.5rem;
+    }
+
+    /* ==========================================================================
+       SECTION: CONTACT & INQUIRY (MULTI-CHANNEL SUITE)
+       ========================================================================== */
+    .contact-section {
+      padding: var(--section-spacing) 0;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.25fr;
+      gap: 4.5rem;
+      align-items: start;
+    }
+
+    .direct-channels {
+      margin-top: 2.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .channel-block {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      padding: 1.25rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: border-color var(--transition-fast), background var(--transition-fast);
+    }
+
+    .channel-block:hover {
+      border-color: var(--border-medium);
+      background: var(--bg-card-hover);
+    }
+
+    .channel-meta {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .channel-title {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .channel-val {
+      font-family: var(--font-display);
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-top: 0.2rem;
+    }
+
+    .channel-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      flex-wrap: wrap;
+    }
+
+    .copy-btn {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--text-secondary);
+      background: var(--bg-tertiary);
+      border: 1px solid var(--border-subtle);
+      padding: 0.35rem 0.65rem;
+      border-radius: var(--radius-sm);
+      transition: all var(--transition-fast);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .copy-btn:hover {
+      color: var(--text-primary);
+      border-color: var(--border-strong);
+      background: var(--bg-card-hover);
+    }
+
+    .copy-btn.highlight-btn {
+      background: rgba(34, 197, 94, 0.1);
+      border-color: rgba(34, 197, 94, 0.3);
+      color: #4ade80;
+    }
+
+    .copy-btn.highlight-btn:hover {
+      background: rgba(34, 197, 94, 0.2);
+      border-color: #4ade80;
+    }
+
+    /* Inquiry Form */
+    .inquiry-form-container {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-medium);
+      border-radius: var(--radius-md);
+      padding: 3rem;
+    }
+
+    .inquiry-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.75rem;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .form-label {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .form-control {
+      background: var(--bg-tertiary);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      padding: 0.85rem 1rem;
+      font-size: 0.95rem;
+      color: var(--text-primary);
+      transition: border-color var(--transition-fast), background var(--transition-fast);
+    }
+
+    .form-control:focus {
+      border-color: var(--text-primary);
+      background: var(--bg-card-hover);
+    }
+
+    textarea.form-control {
+      min-height: 130px;
+      resize: vertical;
+    }
+
+    /* Anti-Spam Hidden Honeypot Field (Invisible to human eyes) */
+    .hp-field {
+      display: none !important;
+      position: absolute;
+      left: -9999px;
+    }
+
+    .form-notification {
+      display: none;
+      padding: 1.25rem;
+      background: rgba(34, 197, 94, 0.08);
+      border: 1px solid rgba(34, 197, 94, 0.3);
+      border-radius: var(--radius-sm);
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      color: #4ade80;
+      line-height: 1.6;
+    }
+
+    .form-error-notification {
+      display: none;
+      padding: 1rem;
+      background: rgba(239, 68, 68, 0.08);
+      border: 1px solid rgba(239, 68, 68, 0.3);
+      border-radius: var(--radius-sm);
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      color: #f87171;
+    }
+
+    /* ==========================================================================
+       FOOTER
+       ========================================================================== */
+    .site-footer {
+      padding: 4rem 0 3rem;
+      background: var(--bg-secondary);
+    }
+
+    .footer-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 2.5rem;
+      border-bottom: 1px solid var(--border-subtle);
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+
+    .footer-brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 2.5rem;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+
+    .time-tracker {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    /* Modal for Quick System Preview */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(12px);
+      z-index: 2000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+
+    .modal-overlay.active {
+      display: flex;
+    }
+
+    .modal-box {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-medium);
+      border-radius: var(--radius-md);
+      max-width: 760px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      padding: 2.5rem;
+      position: relative;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 1.5rem;
+      right: 1.5rem;
+      font-family: var(--font-mono);
+      font-size: 1.25rem;
+      color: var(--text-muted);
+      cursor: pointer;
+    }
+
+    .modal-close:hover {
+      color: var(--text-primary);
+    }
+
+    /* Toast Notification */
+    .toast-popup {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      background: var(--accent-white);
+      color: var(--text-inverse);
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 0.75rem 1.25rem;
+      border-radius: var(--radius-sm);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      z-index: 3000;
+      transform: translateY(100px);
+      opacity: 0;
+      transition: all var(--transition-medium);
+    }
+
+    .toast-popup.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    /* ==========================================================================
+       RESPONSIVENESS (1440px, 768px, 375px)
+       ========================================================================== */
+    @media (max-width: 1024px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 3.5rem;
+      }
+      .philosophy-grid,
+      .services-grid {
+        grid-template-columns: 1fr;
+      }
+      .skills-matrix {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .project-card {
+        grid-template-columns: 1fr;
+      }
+      .project-preview {
+        border-left: none;
+        border-top: 1px solid var(--border-subtle);
+      }
+      .faq-layout,
+      .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      :root {
+        --section-spacing: 80px;
+      }
+      .container {
+        padding-left: 1.25rem;
+        padding-right: 1.25rem;
+      }
+      .nav-links, .status-indicator {
+        display: none;
+      }
+      .mobile-toggle {
+        display: flex;
+      }
+      .hero-stats-row {
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
+      }
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+      .inquiry-form-container {
+        padding: 2rem 1.5rem;
+      }
+      .skills-matrix {
+        grid-template-columns: 1fr;
+      }
+      .project-content {
+        padding: 2rem 1.5rem;
+      }
+      .profile-image-container {
+        height: 320px;
+      }
+    }
+
+    @media (max-width: 375px) {
+      .hero-headline {
+        font-size: 2.15rem;
+      }
+      .btn {
+        width: 100%;
+      }
+      .hero-cta-group {
+        flex-direction: column;
+        width: 100%;
+      }
+    }
+    /* Social links in footer */
+    .social-links { display:flex; gap:0.75rem; align-items:center; }
+    .social-link { display:inline-flex; align-items:center; justify-content:center; width:36px; height:36px; border-radius:6px; background:var(--bg-tertiary); border:1px solid var(--border-subtle); transition:all var(--transition-fast); }
+    .social-link svg { width:18px; height:18px; fill:var(--text-primary); }
+    .social-link:hover { transform:translateY(-2px); background:var(--bg-card-hover); border-color:var(--border-strong); }
+    .social-link:focus { outline:2px solid var(--accent-tint); outline-offset:2px; }
+  </style>
+</head>
+<body>
+
+  <!-- ==========================================================================
+       HEADER
+       ========================================================================== -->
+  <header class="site-header" id="header">
+    <div class="container">
+      <div class="nav-inner">
+        <a href="#hero" class="brand-logo" aria-label="Franklin Thuku — Homepage">
+          <div class="logo-badge">FT</div>
+          <div>
+            <span class="logo-text">FRANKLIN THUKU</span>
+            <span class="logo-sub">// ENG</span>
+          </div>
+        </a>
+
+        <nav>
+          <ul class="nav-links">
+            <li><a href="#philosophy" class="nav-link">Philosophy</a></li>
+            <li><a href="#projects" class="nav-link">Case Studies</a></li>
+            <li><a href="#skills" class="nav-link">Stack</a></li>
+            <li><a href="#services" class="nav-link">Offerings</a></li>
+            <li><a href="#faq" class="nav-link">FAQ</a></li>
+            <li><a href="#contact" class="nav-link">Inquiry</a></li>
+          </ul>
+        </nav>
+
+        <div class="nav-actions">
+          <div class="api-status-badge" id="apiStatusBadge" title="Click to verify FastAPI backend connection">
+            <span class="pulse-dot" id="apiStatusDot"></span>
+            <span id="apiStatusText">FASTAPI // OFFLINE</span>
+          </div>
+          <a href="#contact" class="btn btn-primary" style="padding: 0.55rem 1.1rem; font-size: 0.8rem;">
+            Initiate Contact
+          </a>
+          <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle navigation menu">
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Menu Drawer -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#philosophy" class="nav-link mobile-nav-link">01. Engineering Philosophy</a>
+    <a href="#projects" class="nav-link mobile-nav-link">02. Selected Case Studies</a>
+    <a href="#skills" class="nav-link mobile-nav-link">03. Technical Capabilities</a>
+    <a href="#services" class="nav-link mobile-nav-link">04. Engagement Models</a>
+    <a href="#faq" class="nav-link mobile-nav-link">05. Frequently Asked Questions</a>
+    <a href="#contact" class="nav-link mobile-nav-link">06. Contact & Inquiry</a>
+    <div style="margin-top: auto; padding-top: 1rem; border-top: 1px solid var(--border-subtle);">
+      <p style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted);">
+        LOCATION: JUJA, KENYA // STATUS: READY FOR HIGH-TICKET ROLES & CONTRACTS
+      </p>
+    </div>
+  </div>
+
+  <main>
+    <!-- ==========================================================================
+         HERO SECTION WITH DEDICATED PROFILE PHOTO SLOT
+         ========================================================================== -->
+    <section class="hero-section scroll-section" id="hero">
+      <div class="container">
+        <div class="hero-grid">
+          
+          <div class="hero-content">
+            <div class="hero-meta hero-anim">
+              <span class="editorial-label">Systems & Applied Engineering</span>
+              <span class="hero-meta-badge">JUJA, KENYA</span>
+              <span class="hero-meta-badge">COMPTECH STUDENT & BUILDER</span>
+            </div>
+
+            <h1 class="hero-headline hero-anim">
+              Engineering practical software with <span class="highlight">resilient backends</span> and intelligent systems.
+            </h1>
+
+            <p class="hero-subheadline hero-anim">
+              I am Franklin Thuku, a Software Engineer and Computer Technology student based in Juja, Kenya. I turn challenging technical problems into production-ready software—bridging web development, scalable APIs, and backend architectures with emerging disciplines in AI and cybersecurity.
+            </p>
+
+            <div class="hero-cta-group hero-anim">
+              <a href="#projects" class="btn btn-primary">
+                Review Case Studies <span class="btn-icon">↓</span>
+              </a>
+              <a href="#contact" class="btn btn-secondary">
+                Discuss Opportunities <span class="btn-icon">→</span>
+              </a>
+            </div>
+
+            <div class="hero-stats-row hero-anim">
+              <div class="stat-card">
+                <span class="stat-number">100%</span>
+                <span class="stat-label">Code-First Execution</span>
+              </div>
+              <div class="stat-card">
+                <span class="stat-number">3-Tier</span>
+                <span class="stat-label">Dev + AI + Sec Paradigm</span>
+              </div>
+              <div class="stat-card">
+                <span class="stat-number">&lt; 12h</span>
+                <span class="stat-label">Inquiry Latency</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Hero Right Column: Profile Picture Showcase + Interactive Terminal -->
+          <div class="hero-profile-column hero-anim">
+            
+            <!-- DEDICATED PROFILE PHOTO CARD -->
+            <div class="profile-photo-card">
+              <div class="profile-card-header">
+                <span>[ FIGURE 01 // PRINCIPAL ENGINEER ]</span>
+                <span>STATUS: ONLINE</span>
+              </div>
+              
+              <div class="profile-image-container">
+                <img
+                  src="./profile.png"
+                  alt="Franklin Thuku — Software Engineer based in Juja, Kenya"
+                  class="profile-img"
+                  id="profilePhoto"
+                  onerror="this.style.display='none'; document.getElementById('profilePlaceholder').style.display='flex';"
+                />
+
+                <div class="profile-placeholder-box" id="profilePlaceholder">
+                  <div class="profile-placeholder-avatar">FT</div>
+                  <p style="font-size: 0.85rem; color: var(--text-primary); font-weight:600;">FRANKLIN THUKU</p>
+                  <p style="font-size: 0.72rem;">Add <code style="color:#ffffff; background:#222; padding:2px 6px; border-radius:2px;">profile.png</code> to the frontend folder.</p>
+                </div>
+
+                <div class="profile-overlay-badge">
+                  <div>
+                    <div class="profile-badge-name">Franklin Thuku</div>
+                    <div class="profile-badge-loc">Software Engineer // Juja, Kenya</div>
+                  </div>
+                  <a href="#contact" class="copy-btn" style="font-size: 0.7rem;">Connect ↗</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Mini Interactive Terminal Widget -->
+            <div class="terminal-window">
+              <div class="terminal-header">
+                <div class="terminal-dots">
+                  <span class="terminal-dot"></span>
+                  <span class="terminal-dot"></span>
+                  <span class="terminal-dot"></span>
+                </div>
+                <span class="terminal-title">franklin@juja-node: ~/manifest</span>
+                <span style="font-family: var(--font-mono); font-size: 0.7rem; color: #4ade80;">● ACTIVE</span>
+              </div>
+
+              <div class="terminal-body" id="terminalOutput">
+                <div class="term-log">
+                  <div class="term-line">
+                    <span class="term-prompt">$</span>
+                    <span class="term-cmd">sysinfo --engineer=franklin_thuku</span>
+                  </div>
+                  <div class="term-out">
+                    Name: Franklin Thuku<br />
+                    Location: Juja, Kenya (EAT / UTC+3)<br />
+                    Direct: +254 725 486 708 | brookthuku@gmail.com<br />
+                    Philosophy: <span class="term-tag">Learn By Building</span>
+                  </div>
+
+                  <div class="term-line">
+                    <span class="term-prompt">$</span>
+                    <span class="term-cmd" id="terminalDynamicLine">ready for query...</span>
+                  </div>
+                </div>
+
+                <div class="terminal-quick-actions">
+                  <button class="term-btn" onclick="runTermCommand('stack')">view_stack()</button>
+                  <button class="term-btn" onclick="runTermCommand('philosophy')">get_philosophy()</button>
+                  <button class="term-btn" onclick="runTermCommand('availability')">check_status()</button>
+                  <button class="term-btn" onclick="runTermCommand('contact')">get_contact_info()</button>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECTION: ENGINEERING PHILOSOPHY (LEARN BY BUILDING)
+         ========================================================================== -->
+    <section class="philosophy-section scroll-section" id="philosophy">
+      <div class="container">
+        
+        <div class="section-header-block">
+          <div>
+            <span class="editorial-label">Core Doctrine</span>
+            <h2 class="section-title">The "Learn by Building" Engine</h2>
+          </div>
+          <p class="section-desc">
+            Rather than collecting passive certificates, I construct working, production-grade applications that challenge architectural limits. Every system is built to be intelligent, reliable, and secure from day one.
+          </p>
+        </div>
+
+        <div class="philosophy-grid stagger-group">
+          
+          <div class="philosophy-card stagger-item">
+            <span class="card-num">[ PHILOSOPHY 01 ]</span>
+            <h3 class="card-title">Pragmatic Backend & API Foundations</h3>
+            <p class="card-body">
+              Systems succeed or fail on the strength of their backends. I engineer low-latency REST and WebSocket architectures, normalize clean database schemas, and enforce strict error handling over premature abstractions.
+            </p>
+            <div class="card-footer-tags">
+              <span class="tech-pill">High Concurrency</span>
+              <span class="tech-pill">Database Indexing</span>
+              <span class="tech-pill">RESTful Design</span>
+            </div>
+          </div>
+
+          <div class="philosophy-card stagger-item">
+            <span class="card-num">[ PHILOSOPHY 02 ]</span>
+            <h3 class="card-title">Applied AI Over Decorative Hype</h3>
+            <p class="card-body">
+              AI should solve tangible user friction. I focus on practical LLM orchestration, retrieval-augmented generation (RAG) vector pipelines, and contextual semantic search directly embedded in product workflows.
+            </p>
+            <div class="card-footer-tags">
+              <span class="tech-pill">Vector Embeddings</span>
+              <span class="tech-pill">RAG Architecture</span>
+              <span class="tech-pill">FastAPI / Python</span>
+            </div>
+          </div>
+
+          <div class="philosophy-card stagger-item">
+            <span class="card-num">[ PHILOSOPHY 03 ]</span>
+            <h3 class="card-title">Defensive Engineering & Zero-Trust</h3>
+            <p class="card-body">
+              Security is not an afterthought added before deployment. I implement cryptographic token authentication, strict role-based access control (RBAC), sanitized input validation, and container isolation natively.
+            </p>
+            <div class="card-footer-tags">
+              <span class="tech-pill">OWASP Compliance</span>
+              <span class="tech-pill">JWT / OAuth2</span>
+              <span class="tech-pill">Least Privilege</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECTION: SELECTED CASE STUDIES & PROJECTS (DYNAMIC BACKEND INTEGRATION)
+         ========================================================================== -->
+    <section class="projects-section scroll-section" id="projects">
+      <div class="container">
+        
+        <div class="section-header-block">
+          <div>
+            <span class="editorial-label">Dynamic API Catalog</span>
+            <h2 class="section-title">Production Systems & Case Studies</h2>
+          </div>
+          <p class="section-desc">
+            Deep-dive breakdowns of practical software engineered for scalability, resilience, and real-world utility. Connected directly to FastAPI backend via <code>GET /api/v1/projects</code>.
+          </p>
+        </div>
+
+        <div class="project-filter-bar">
+          <button class="filter-btn active" onclick="filterProjects('all', this)">[ ALL WORK ]</button>
+          <button class="filter-btn" onclick="filterProjects('backend', this)">BACKEND & APIS</button>
+          <button class="filter-btn" onclick="filterProjects('ai', this)">AI & RAG PIPELINES</button>
+          <button class="filter-btn" onclick="filterProjects('security', this)">SECURITY & TOOLS</button>
+        </div>
+
+        <div class="projects-stack stagger-group" id="projectsContainer">
+          <div style="padding: 3rem; text-align: center; font-family: var(--font-mono); color: var(--text-muted); border: 1px dashed var(--border-subtle);">
+            Streaming project catalog from FastAPI backend...
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECTION: TECHNICAL MATRIX & STACK
+         ========================================================================== -->
+    <section class="skills-section scroll-section" id="skills">
+      <div class="container">
+        
+        <div class="section-header-block">
+          <div>
+            <span class="editorial-label">Technical Competencies</span>
+            <h2 class="section-title">Battle-Tested Engineering Matrix</h2>
+          </div>
+          <p class="section-desc">
+            A breakdown of languages, systems, database technologies, and security frameworks I actively utilize to ship resilient software.
+          </p>
+        </div>
+
+        <div class="skills-matrix stagger-group">
+          
+          <div class="skill-column stagger-item">
+            <div class="skill-col-header">
+              <h3 class="skill-col-title">01. Systems & Backends</h3>
+              <p class="skill-col-caption">Core Server & Logic</p>
+            </div>
+            <ul class="skill-list">
+              <li class="skill-item"><span class="name">Python / FastAPI</span> <span class="level">Advanced</span></li>
+              <li class="skill-item"><span class="name">Node.js / Express</span> <span class="level">Advanced</span></li>
+              <li class="skill-item"><span class="name">Go (Golang)</span> <span class="level">Proficient</span></li>
+              <li class="skill-item"><span class="name">REST & WebSockets</span> <span class="level">Production</span></li>
+              <li class="skill-item"><span class="name">TypeScript</span> <span class="level">Strict Mode</span></li>
+            </ul>
+          </div>
+
+          <div class="skill-column stagger-item">
+            <div class="skill-col-header">
+              <h3 class="skill-col-title">02. Data & Storage</h3>
+              <p class="skill-col-caption">State & Query Engines</p>
+            </div>
+            <ul class="skill-list">
+              <li class="skill-item"><span class="name">PostgreSQL / SQLAlchemy</span> <span class="level">Async 2.0</span></li>
+              <li class="skill-item"><span class="name">Redis</span> <span class="level">Caching / Queues</span></li>
+              <li class="skill-item"><span class="name">pgvector</span> <span class="level">Vector Search</span></li>
+              <li class="skill-item"><span class="name">MongoDB</span> <span class="level">Document Stores</span></li>
+              <li class="skill-item"><span class="name">Alembic</span> <span class="level">Migrations</span></li>
+            </ul>
+          </div>
+
+          <div class="skill-column stagger-item">
+            <div class="skill-col-header">
+              <h3 class="skill-col-title">03. Applied AI & Tools</h3>
+              <p class="skill-col-caption">Machine Intelligence</p>
+            </div>
+            <ul class="skill-list">
+              <li class="skill-item"><span class="name">RAG Architecture</span> <span class="level">Semantic Embeds</span></li>
+              <li class="skill-item"><span class="name">LLM Tool Calling</span> <span class="level">Structured I/O</span></li>
+              <li class="skill-item"><span class="name">LangChain / LlamaIndex</span> <span class="level">Workflows</span></li>
+              <li class="skill-item"><span class="name">HuggingFace API</span> <span class="level">Models</span></li>
+              <li class="skill-item"><span class="name">Pydantic v2</span> <span class="level">Schema Parsing</span></li>
+            </ul>
+          </div>
+
+          <div class="skill-column stagger-item">
+            <div class="skill-col-header">
+              <h3 class="skill-col-title">04. Security & DevOps</h3>
+              <p class="skill-col-caption">Resilience & Delivery</p>
+            </div>
+            <ul class="skill-list">
+              <li class="skill-item"><span class="name">Docker & Containers</span> <span class="level">Compose / Build</span></li>
+              <li class="skill-item"><span class="name">OAuth2 / JWT Auth</span> <span class="level">Zero-Trust</span></li>
+              <li class="skill-item"><span class="name">Linux Environments</span> <span class="level">Bash / CLI</span></li>
+              <li class="skill-item"><span class="name">OWASP Top 10</span> <span class="level">Hardening</span></li>
+              <li class="skill-item"><span class="name">Git / GitHub Actions</span> <span class="level">CI/CD Automations</span></li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+       SECTION: COLLABORATION & CLIENT OFFERINGS
+       ========================================================================== -->
+    <section class="services-section scroll-section" id="services">
+      <div class="container">
+        
+        <div class="section-header-block">
+          <div>
+            <span class="editorial-label">Collaboration Models</span>
+            <h2 class="section-title">Engineering Engagement Options</h2>
+          </div>
+          <p class="section-desc">
+            Whether you are an engineering team scouting motivated technical talent or a founder looking for a dependable builder.
+          </p>
+        </div>
+
+        <div class="services-grid stagger-group">
+          
+          <div class="service-card stagger-item">
+            <div>
+              <div class="service-tier">[ MODEL 01 // CAREER & TEAMS ]</div>
+              <h3 class="service-name">Full-Time & Internship Roles</h3>
+              <p class="service-desc">
+                Integrating seamlessly into engineering teams building practical backend services, web applications, or core infrastructure.
+              </p>
+              <ul class="service-deliverables">
+                <li class="deliverable-item">Rapid onboarding and clean Git practices</li>
+                <li class="deliverable-item">Autonomous problem-solving & proactive updates</li>
+                <li class="deliverable-item">Pragmatic code with tests and clear documentation</li>
+                <li class="deliverable-item">Strong work ethic driven by continuous learning</li>
+              </ul>
+            </div>
+            <a href="#contact" class="btn btn-secondary">Request Interview</a>
+          </div>
+
+          <div class="service-card featured stagger-item">
+            <span class="featured-badge">HIGH IMPACT</span>
+            <div>
+              <div class="service-tier">[ MODEL 02 // CUSTOM BUILDS ]</div>
+              <h3 class="service-name">Full-Stack MVP & API Engineering</h3>
+              <p class="service-desc">
+                Turn your product blueprint into a production-ready application with a modern frontend, scalable API backend, and rock-solid auth.
+              </p>
+              <ul class="service-deliverables">
+                <li class="deliverable-item">Architecture roadmap & database design</li>
+                <li class="deliverable-item">End-to-end REST/GraphQL API implementation</li>
+                <li class="deliverable-item">Responsive web application interface</li>
+                <li class="deliverable-item">Containerized Docker setup ready for deploy</li>
+              </ul>
+            </div>
+            <a href="#contact" class="btn btn-primary">Initiate Project Build</a>
+          </div>
+
+          <div class="service-card stagger-item">
+            <div>
+              <div class="service-tier">[ MODEL 03 // MODERNIZATION ]</div>
+              <h3 class="service-name">AI Integration & Security Audit</h3>
+              <p class="service-desc">
+                Enhance your existing software stack with intelligent semantic search, automated LLM tool calling, or an adversarial security audit.
+              </p>
+              <ul class="service-deliverables">
+                <li class="deliverable-item">Custom vector database ingestion pipelines</li>
+                <li class="deliverable-item">API authentication & vulnerability review</li>
+                <li class="deliverable-item">Performance profiling & query optimization</li>
+                <li class="deliverable-item">Actionable architectural remediation report</li>
+              </ul>
+            </div>
+            <a href="#contact" class="btn btn-secondary">Schedule Consultation</a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+       SECTION: FAQ
+       ========================================================================== -->
+    <section class="faq-section scroll-section" id="faq">
+      <div class="container">
+        
+        <div class="faq-layout">
+          <div>
+            <span class="editorial-label">Clarity & Protocol</span>
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            <p class="section-desc" style="margin-top: 1rem;">
+              Transparent answers regarding my engineering methodology, availability, and technical background.
+            </p>
+          </div>
+
+          <div class="faq-list">
+            
+            <div class="faq-item active">
+              <button class="faq-question" onclick="toggleFaq(this)">
+                <span>What is your current availability for roles and client work?</span>
+                <span class="faq-toggle-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                I am based in Juja, Kenya (EAT / UTC+3) and actively open to remote software engineering roles, internships, and selecting select high-impact contract builds. I collaborate with global teams across all major timezones.
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question" onclick="toggleFaq(this)">
+                <span>How does your "Learn by Building" philosophy translate to teams?</span>
+                <span class="faq-toggle-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                It means I don't wait to be spoon-fed instructions. When faced with an unfamiliar framework, database, or API protocol, I rapidly build small prototype harnesses to master edge cases before writing production code. This translates to very short ramp-up times on new codebases.
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question" onclick="toggleFaq(this)">
+                <span>How do your interests in AI and Cybersecurity benefit web & backend projects?</span>
+                <span class="faq-toggle-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                Traditional development often separates feature development from security and intelligence. My approach integrates them: backends are naturally shielded against injection, rate-abuse, and unauthorized access, while AI tools are leveraged for real business automation rather than superficial features.
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question" onclick="toggleFaq(this)">
+                <span>Can we schedule a technical walkthrough or phone call?</span>
+                <span class="faq-toggle-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                Yes! You can call/WhatsApp me directly at +254 725 486 708 or email brookthuku@gmail.com to schedule a live architecture walkthrough on Google Meet or Zoom.
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+       SECTION: CONTACT & DIRECT MULTI-CHANNEL SUITE
+       ========================================================================== -->
+    <section class="contact-section scroll-section" id="contact">
+      <div class="container">
+        
+        <div class="contact-grid">
+          
+          <div>
+            <span class="editorial-label">Direct Communication Suite</span>
+            <h2 class="section-title">Let's build something practical.</h2>
+            <p class="section-desc">
+              Have a question or looking to collaborate? You can text or call me directly on WhatsApp/Phone, send an email, or dispatch an inquiry through the verified backend form.
+            </p>
+
+            <div class="direct-channels">
+              
+              <!-- Direct Email Block -->
+              <div class="channel-block">
+                <div class="channel-meta">
+                  <span class="channel-title">Direct Email</span>
+                  <a href="mailto:brookthuku@gmail.com" class="channel-val">brookthuku@gmail.com</a>
+                </div>
+                <div class="channel-actions">
+                  <button class="copy-btn" onclick="copyToClipboard('brookthuku@gmail.com', 'Email copied to clipboard!')">Copy</button>
+                  <a href="#" onclick="openEmailCompose(); return false;" class="copy-btn highlight-btn">Send Email ↗</a>
+                </div>
+              </div>
+
+              <!-- Direct WhatsApp Text Block -->
+              <div class="channel-block">
+                <div class="channel-meta">
+                  <span class="channel-title">Direct WhatsApp / SMS</span>
+                  <a href="https://wa.me/254725486708?text=Hi%20Franklin,%20I%20reviewed%20your%20portfolio%20and%20would%20like%20to%20connect." target="_blank" rel="noopener" class="channel-val">+254 725 486 708</a>
+                </div>
+                <div class="channel-actions">
+                  <button class="copy-btn" onclick="copyToClipboard('+254725486708', 'Phone number copied!')">Copy</button>
+                  <a href="https://wa.me/254725486708?text=Hi%20Franklin,%20I%20reviewed%20your%20portfolio%20and%20would%20like%20to%20connect." target="_blank" rel="noopener" class="copy-btn highlight-btn">WhatsApp Text ↗</a>
+                  <a href="tel:+254725486708" class="copy-btn">Call ↗</a>
+                </div>
+              </div>
+
+              <!-- Base Location -->
+              <div class="channel-block">
+                <div class="channel-meta">
+                  <span class="channel-title">Physical Base & Timezone</span>
+                  <span class="channel-val">Juja, Kenya (EAT / UTC+3)</span>
+                </div>
+                <span style="font-family: var(--font-mono); font-size: 0.75rem; color: #4ade80;">● REMOTE-READY</span>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Interactive Inquiry Form Connected to FastAPI POST /api/v1/contact -->
+          <div class="inquiry-form-container">
+            <form class="inquiry-form" id="contactForm" onsubmit="handleFormSubmit(event)">
+              
+              <!-- Anti-Spam Hidden Honeypot Field -->
+              <input type="text" id="websiteUrlHp" class="hp-field" tabindex="-1" autocomplete="off" />
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label" for="senderName">Your Name / Organization *</label>
+                  <input type="text" id="senderName" class="form-control" placeholder="e.g. Sarah Jenkins (Acme Tech)" required minlength="2" />
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="senderEmail">Email Address *</label>
+                  <input type="email" id="senderEmail" class="form-control" placeholder="name@company.com" required />
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="inquiryType">Inquiry Classification</label>
+                <select id="inquiryType" class="form-control">
+                  <option value="Full-Time / Internship Opportunity">Full-Time / Internship Opportunity</option>
+                  <option value="Custom MVP / Backend Build">Custom MVP / Backend Contract Build</option>
+                  <option value="AI / Security Consultation">AI / Security Architecture Consultation</option>
+                  <option value="Technical Partnership">Technical Partnership / General Question</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="messageText">Question or Project Blueprint *</label>
+                <textarea id="messageText" class="form-control" placeholder="Describe the technical requirements, timeline, or question..." required minlength="5"></textarea>
+              </div>
+
+              <div class="form-notification" id="formNotification">
+                <!-- Injected on Success -->
+              </div>
+
+              <div class="form-error-notification" id="formErrorNotification">
+                <!-- Injected on Error -->
+              </div>
+
+              <button type="submit" class="btn btn-primary" id="submitBtn" style="width: 100%;">
+                <span id="submitBtnText">Dispatch Transmission</span> <span class="btn-icon">→</span>
+              </button>
+
+            </form>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- ==========================================================================
+       FOOTER
+       ========================================================================== -->
+  <footer class="site-footer">
+    <div class="container">
+      
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="logo-badge">FT</div>
+          <div>
+            <span class="logo-text">FRANKLIN THUKU</span>
+            <span class="logo-sub">// JUJA, KENYA</span>
+          </div>
+        </div>
+
+        <nav>
+          <ul class="nav-links" style="display: flex;">
+            <li><a href="#hero" class="nav-link">Top [ ↑ ]</a></li>
+            <li><a href="#philosophy" class="nav-link">Philosophy</a></li>
+            <li><a href="#projects" class="nav-link">Case Studies</a></li>
+            <li><a href="#contact" class="nav-link">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <div class="footer-bottom">
+        <div>
+          © <span id="currentYear">2026</span> FRANKLIN THUKU. ALL RIGHTS RESERVED.
+        </div>
+        <div class="time-tracker">
+          <span>LOCAL TIME (JUJA, EAT):</span>
+          <span id="eatTime" style="color: var(--text-primary); font-weight: 600;">--:--:--</span>
+        </div>
+        <div>
+          FASTAPI ASYNC BACKEND + POSTGRES // 0-FRAMEWORK CLIENT
+        </div>
+        <div class="social-links" style="margin-left:auto;">
+          <a href="https://www.linkedin.com/in/franklin-thuku-443ab7361/" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="Franklin Thuku on LinkedIn">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M4.98 3.5C4.98 4.88 3.88 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM0 8h5v16H0zM8 8h4.8v2.2h.1c.7-1.3 2.4-2.6 4.9-2.6C22.6 7.6 24 10 24 14.6V24h-5v-8.7c0-2.1-.8-3.5-2.8-3.5-1.5 0-2.4 1-2.8 2v10.2H8V8z"/></svg>
+          </a>
+          <a href="https://github.com/Franklin-Thuku" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="Franklin Thuku on GitHub">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M12 .5C5.65.5.5 5.66.5 12c0 5.08 3.29 9.38 7.86 10.9.58.1.79-.25.79-.56 0-.28-.01-1.02-.02-2-3.2.7-3.88-1.54-3.88-1.54-.53-1.36-1.3-1.72-1.3-1.72-1.06-.72.08-.7.08-.7 1.17.08 1.78 1.2 1.78 1.2 1.04 1.78 2.73 1.27 3.4.98.11-.77.41-1.27.75-1.56-2.55-.29-5.24-1.28-5.24-5.71 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11.04 11.04 0 012.9-.39c.98.01 1.96.13 2.88.39 2.2-1.5 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.84 1.19 3.1 0 4.44-2.7 5.41-5.27 5.69.42.36.79 1.09.79 2.2 0 1.59-.01 2.87-.01 3.26 0 .31.21.67.8.56C20.71 21.38 24 17.08 24 12 24 5.66 18.35.5 12 .5z"/></svg>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- ==========================================================================
+       MODAL: SYSTEM ARCHITECTURE INSPECTOR
+       ========================================================================== -->
+  <div class="modal-overlay" id="systemModal" onclick="closeModalOutside(event)">
+    <div class="modal-box">
+      <span class="modal-close" onclick="closeModal()">✕</span>
+      <div id="modalContent"></div>
+    </div>
+  </div>
+
+  <!-- Email Compose Modal -->
+  <div class="modal-overlay" id="emailModal" onclick="closeEmailComposeOutside(event)">
+    <div class="modal-box">
+      <span class="modal-close" onclick="closeEmailCompose()">✕</span>
+      <h3 style="margin-top:0; margin-bottom:0.5rem;">Compose Email</h3>
+      <p style="color:var(--text-muted); margin-bottom:1rem;">Send a direct message — it will be delivered to Franklin and you'll receive a reply-to address.</p>
+
+      <form id="emailComposeForm" onsubmit="submitComposeForm(event)">
+        <div style="display:grid; gap:0.75rem;">
+          <input type="text" id="composeName" class="form-control" placeholder="Your name*" required minlength="2" />
+          <input type="email" id="composeEmail" class="form-control" placeholder="Your email*" required />
+          <select id="composeInquiryType" class="form-control">
+            <option value="General Inquiry">General Inquiry</option>
+            <option value="Project Opportunity">Project Opportunity</option>
+            <option value="Consultation">Consultation</option>
+            <option value="Other">Other</option>
+          </select>
+          <textarea id="composeMessage" class="form-control" placeholder="Write your message..." required minlength="5"></textarea>
+          <input type="text" id="composeHp" class="hp-field" tabindex="-1" autocomplete="off" />
+
+          <div style="display:flex; gap:0.5rem; justify-content:flex-end; margin-top:0.5rem;">
+            <button type="button" class="btn btn-secondary" onclick="closeEmailCompose()">Cancel</button>
+            <button type="submit" class="btn btn-primary" id="composeSendBtn">Send</button>
+          </div>
+
+          <div class="form-notification" id="composeSuccess" style="display:none; margin-top:0.5rem;"></div>
+          <div class="form-error-notification" id="composeError" style="display:none; margin-top:0.5rem;"></div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Toast Notification element -->
+  <div class="toast-popup" id="toast">Message copied!</div>
+
+  <!-- ==========================================================================
+       SCRIPTS & GSAP ANIMATIONS
+       ========================================================================== -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+  <script>
+    const API_BASE_URL = 'http://127.0.0.1:8000/api/v1';
+    let cachedProjects = [];
+
+    const FALLBACK_PROJECTS = [
+      {
+        slug: "sentinelgate",
+        serial_tag: "CASE STUDY // 01",
+        category: "SECURITY & INFRASTRUCTURE",
+        category_slug: "security backend",
+        title: "SentinelGate: Reverse Proxy & Threat Mitigator",
+        lead: "A high-throughput API gateway and defensive firewall engine designed to detect DDoS anomalies, enforce token-bucket rate limiting, and block suspicious payloads before reaching application workers.",
+        description: "SentinelGate was built to solve high-concurrency API vulnerability bottlenecks. By sitting directly behind TLS termination, it intercepts all incoming HTTP/gRPC streams and validates tokens in sub-millisecond memory lookups.\n\nKey Highlights:\n- Zero-allocation JSON parsing pipeline in Go reducing GC pause spikes by 84%.\n- Distributed token-bucket rate limiter backed by atomic Redis Lua scripts.\n- Cryptographic fingerprinting of malicious automated scrapers.",
+        metrics: [
+          { val: "< 3.8ms", desc: "Median Latency Overhead" },
+          { val: "100k+ Req/s", desc: "Simulated Load Handled" },
+          { val: "Zero-Leak", desc: "Memory Profiling" },
+          { val: "Redis + Go", desc: "Core Stack Engine" }
+        ],
+        technologies: ["Go (Golang)", "Redis", "Docker", "Prometheus", "Linux"],
+        topology: {
+          title: "TOPOLOGY: SENTINELGATE PIPELINE",
+          version: "v2.4.1",
+          steps: [
+            { type: "node", label: "[ CLIENT REQ ]", sublabel: "TLS 1.3 Termination", highlighted: false },
+            { type: "arrow", text: "↓ inspect headers & rate-limits" },
+            { type: "node", label: "[ SENTINEL CORE ]", sublabel: "Go + Redis Token Bucket", highlighted: true },
+            { type: "arrow", text: "↓ zero-trust token validated" },
+            { type: "node", label: "[ UPSTREAM SERVICES ]", sublabel: "Microservices Cluster", highlighted: false }
+          ]
+        }
+      },
+      {
+        slug: "cortexflow",
+        serial_tag: "CASE STUDY // 02",
+        category: "APPLIED AI & DATA",
+        category_slug: "ai backend",
+        title: "CortexFlow: Vector-Augmented Knowledge Engine",
+        lead: "Enterprise-grade retrieval-augmented generation (RAG) backend that transforms complex technical documentation and codebase manuals into low-latency semantic search queries with citation validation.",
+        description: "CortexFlow prevents LLM hallucinations in mission-critical technical docs by combining dense vector embeddings with sparse BM25 keyword matching directly inside PostgreSQL via pgvector.\n\nKey Highlights:\n- Recursive document chunker retaining hierarchical code AST context.\n- Cosine similarity clustering with automated re-ranking layer.\n- Asynchronous streaming responses via FastAPI WebSockets.",
+        metrics: [
+          { val: "94.8%", desc: "Retrieval Precision" },
+          { val: "280ms", desc: "End-to-End Vector Query" },
+          { val: "pgvector", desc: "Embedding Store" },
+          { val: "Python / FastAPI", desc: "Async REST Server" }
+        ],
+        technologies: ["Python", "FastAPI", "PostgreSQL", "pgvector", "LangChain"],
+        topology: {
+          title: "TOPOLOGY: RAG VECTOR INGEST",
+          version: "v1.8.0",
+          steps: [
+            { type: "node", label: "[ DOC INGESTION ]", sublabel: "Markdown / PDF / Code", highlighted: false },
+            { type: "arrow", text: "↓ chunking & text-embedding-3" },
+            { type: "node", label: "[ PGVECTOR STORE ]", sublabel: "Cosine Similarity Index", highlighted: true },
+            { type: "arrow", text: "↓ contextual prompt synthesis" },
+            { type: "node", label: "[ RESPONSE AGENT ]", sublabel: "Verified Citations", highlighted: false }
+          ]
+        }
+      },
+      {
+        slug: "omnisync",
+        serial_tag: "CASE STUDY // 03",
+        category: "DISTRIBUTED SYSTEMS",
+        category_slug: "backend",
+        title: "OmniSync: Real-Time CRDT Collaboration Engine",
+        lead: "Conflict-free Replicated Data Type (CRDT) synchronization engine powering sub-millisecond document edits across distributed multi-tenant clients with automatic split-brain resolution.",
+        description: "OmniSync provides conflict-free distributed editing across disconnected or low-bandwidth network clients without relying on a single authoritative central lock.\n\nKey Highlights:\n- Optimized vector clocks handling out-of-order delta delivery.\n- WebSocket multiplexing with automatic exponential backoff reconnection.\n- Immutable ledger logging for full time-travel state auditability.",
+        metrics: [
+          { val: "0 Collisions", desc: "Across 50+ Concurrent Peers" },
+          { val: "< 15ms", desc: "WebSocket Propagation" },
+          { val: "TypeScript", desc: "Node.js + WebSockets" },
+          { val: "PostgreSQL", desc: "Persistent Snapshot Storage" }
+        ],
+        technologies: ["TypeScript", "Node.js", "WebSockets", "PostgreSQL", "CRDT (Yjs)"],
+        topology: {
+          title: "TOPOLOGY: PEER STATE SYNC",
+          version: "v3.0.2",
+          steps: [
+            { type: "node", label: "[ CLIENT A & B ]", sublabel: "Local Delta Mutations", highlighted: false },
+            { type: "arrow", text: "↓ bidirectional WebSockets" },
+            { type: "node", label: "[ CRDT ARBITER ]", sublabel: "Yjs / State Vector Merge", highlighted: true },
+            { type: "arrow", text: "↓ debounced persistence" },
+            { type: "node", label: "[ POSTGRES STORAGE ]", sublabel: "Immutable Event Log", highlighted: false }
+          ]
+        }
+      },
+      {
+        slug: "vulcancore",
+        serial_tag: "CASE STUDY // 04",
+        category: "DEVSECOPS & CLOUD",
+        category_slug: "security backend",
+        title: "VulcanCore: Microservice Telemetry & Audit Suite",
+        lead: "Lightweight, agent-based observability sidecar collecting container metrics, distributed traces, and security event payloads with automated Slack and Webhook alerting.",
+        description: "VulcanCore is an ultra-lean systems monitor that attaches to Docker container namespaces, extracting performance metrics and audit trail logs without polluting application code.\n\nKey Highlights:\n- Tiny 2.1 MB compiled binary footprint with zero external runtime dependencies.\n- Prometheus-compatible scraping endpoints with live metric formatting.\n- Real-time rule engine alerting on anomalous permission escalations.",
+        metrics: [
+          { val: "2.1 MB", desc: "Binary Footprint" },
+          { val: "< 0.5%", desc: "Host CPU Utilization" },
+          { val: "Docker", desc: "Multi-Container Deploys" },
+          { val: "Prometheus", desc: "Metrics Formatter" }
+        ],
+        technologies: ["Docker", "Prometheus", "Python", "Linux", "CI/CD"],
+        topology: {
+          title: "TOPOLOGY: SIDECAR TELEMETRY",
+          version: "v1.2.4",
+          steps: [
+            { type: "node", label: "[ APP CONTAINER ]", sublabel: "stdout / stderr / sockets", highlighted: false },
+            { type: "arrow", text: "↓ zero-overhead unix domain pipe" },
+            { type: "node", label: "[ VULCAN AGENT ]", sublabel: "Log Parsing & Anomaly Rule", highlighted: true },
+            { type: "arrow", text: "↓ cryptographically signed ingest" },
+            { type: "node", label: "[ AUDIT DASHBOARD ]", sublabel: "Secure Telemetry Store", highlighted: false }
+          ]
+        }
+      }
+    ];
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    window.addEventListener('DOMContentLoaded', async () => {
+      gsap.from(".hero-anim", {
+        opacity: 0,
+        y: 25,
+        duration: 0.7,
+        stagger: 0.1,
+        ease: "power2.out"
+      });
+
+      await loadProjects();
+      updateSystemTime();
+      setInterval(updateSystemTime, 1000);
+      document.getElementById('currentYear').textContent = new Date().getFullYear();
+      checkBackendHealth();
+    });
+
+    async function loadProjects(category = 'all') {
+      let url = `${API_BASE_URL}/projects`;
+      if (category !== 'all') {
+        url += `?category=${encodeURIComponent(category)}`;
+      }
+
+      try {
+        const response = await fetch(url, { headers: { 'Accept': 'application/json' } });
+        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+        const data = await response.json();
+        
+        cachedProjects = data.length > 0 ? data : FALLBACK_PROJECTS;
+        renderProjects(cachedProjects);
+        updateApiStatus(true);
+      } catch (err) {
+        cachedProjects = FALLBACK_PROJECTS;
+        const filtered = category === 'all' 
+          ? FALLBACK_PROJECTS 
+          : FALLBACK_PROJECTS.filter(p => p.category_slug.includes(category));
+        renderProjects(filtered);
+        updateApiStatus(false);
+      }
+    }
+
+    function renderProjects(projects) {
+      const container = document.getElementById('projectsContainer');
+      if (!projects || projects.length === 0) {
+        container.innerHTML = `<div style="padding:3rem; text-align:center; font-family:var(--font-mono); color:var(--text-muted);">No projects found in this classification.</div>`;
+        return;
+      }
+
+      container.innerHTML = projects.map((p, idx) => {
+        const metricsHtml = (p.metrics || []).map(m => `
+          <div class="metric-item">
+            <span class="metric-val">${escapeHtml(m.val)}</span>
+            <span class="metric-desc">${escapeHtml(m.desc)}</span>
+          </div>
+        `).join('');
+
+        const topologySteps = (p.topology?.steps || []).map(s => {
+          if (s.type === 'node') {
+            return `
+              <div class="flow-node ${s.highlighted ? 'highlighted' : ''}">
+                <span>${escapeHtml(s.label || '')}</span>
+                <span style="color: ${s.highlighted ? '#ffffff' : 'var(--text-muted)'};">${escapeHtml(s.sublabel || '')}</span>
+              </div>
+            `;
+          } else {
+            return `<div class="flow-arrow">${escapeHtml(s.text || '↓')}</div>`;
+          }
+        }).join('');
+
+        return `
+          <article class="project-card stagger-item" data-slug="${escapeHtml(p.slug)}" data-category="${escapeHtml(p.category_slug || '')}">
+            <div class="project-content">
+              <div>
+                <div class="project-index">
+                  <span class="project-serial">${escapeHtml(p.serial_tag || `CASE STUDY // 0${idx+1}`)}</span>
+                  <span class="project-category">${escapeHtml(p.category || 'SYSTEMS')}</span>
+                </div>
+                <h3 class="project-title">${escapeHtml(p.title)}</h3>
+                <p class="project-lead">${escapeHtml(p.lead)}</p>
+                
+                <div class="project-breakdown">
+                  ${metricsHtml}
+                </div>
+              </div>
+
+              <div class="project-actions">
+                <button class="btn btn-primary" onclick="openModal('${escapeHtml(p.slug)}')">
+                  Inspect Architecture <span class="btn-icon">↗</span>
+                </button>
+                <a href="#contact" class="btn btn-secondary">Inquire Build</a>
+              </div>
+            </div>
+
+            <div class="project-preview">
+              <div class="architecture-diagram">
+                <div class="diagram-header">
+                  <span>${escapeHtml(p.topology?.title || 'SYSTEM TOPOLOGY')}</span>
+                  <span>${escapeHtml(p.topology?.version || 'v1.0')}</span>
+                </div>
+                <div class="diagram-flow">
+                  ${topologySteps}
+                </div>
+              </div>
+            </div>
+          </article>
+        `;
+      }).join('');
+
+      ScrollTrigger.refresh();
+      initScrollAnimations();
+    }
+
+    function initScrollAnimations() {
+      const scrollSections = document.querySelectorAll('.scroll-section');
+      scrollSections.forEach((section) => {
+        gsap.from(section, {
+          scrollTrigger: {
+            trigger: section,
+            start: "top 85%",
+            toggleActions: "play none none none"
+          },
+          opacity: 0,
+          y: 30,
+          duration: 0.6,
+          ease: "power2.out"
+        });
+      });
+    }
+
+    function filterProjects(cat, btnElement) {
+      document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+      btnElement.classList.add('active');
+      loadProjects(cat);
+    }
+
+    function openModal(slug) {
+      const modal = document.getElementById('systemModal');
+      const container = document.getElementById('modalContent');
+      const project = cachedProjects.find(p => p.slug === slug);
+      
+      if (project) {
+        const techPills = (project.technologies || []).map(t => `<span class="tech-pill">${escapeHtml(t)}</span>`).join('');
+        
+        container.innerHTML = `
+          <span class="editorial-label" style="margin-bottom:0.5rem;">FASTAPI // DATA SPECIFICATION</span>
+          <h3 style="font-size:1.6rem; margin-bottom:0.25rem; letter-spacing:-0.03em;">${escapeHtml(project.title)}</h3>
+          <p style="font-family:var(--font-mono); font-size:0.8rem; color:var(--text-muted); margin-bottom:1.5rem;">
+            ${escapeHtml(project.serial_tag)} • ${escapeHtml(project.category)}
+          </p>
+          
+          <div style="font-size:0.95rem; color:var(--text-secondary); line-height:1.7; white-space:pre-line; margin-bottom:1.5rem;">
+            ${escapeHtml(project.description || project.lead)}
+          </div>
+
+          <div style="margin-bottom:1.5rem;">
+            <span style="font-family:var(--font-mono); font-size:0.75rem; color:var(--text-muted); text-transform:uppercase;">Core Technologies:</span>
+            <div style="display:flex; flex-wrap:wrap; gap:0.4rem; margin-top:0.5rem;">
+              ${techPills}
+            </div>
+          </div>
+
+          <div style="margin-top:2rem; padding-top:1.25rem; border-top:1px solid var(--border-subtle); display:flex; gap:1rem; flex-wrap:wrap;">
+            <a href="#contact" class="btn btn-primary" onclick="closeModal()">Discuss System Implementation →</a>
+            <button class="btn btn-secondary" onclick="closeModal()">Close Inspector</button>
+          </div>
+        `;
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
+    }
+
+    function closeModal() {
+      document.getElementById('systemModal').classList.remove('active');
+      document.body.style.overflow = 'auto';
+    }
+
+    function closeModalOutside(event) {
+      if (event.target === document.getElementById('systemModal')) {
+        closeModal();
+      }
+    }
+
+    // ==========================================================================
+    // PHASE 2: CONTACT FORM DISPATCH TO FASTAPI BACKEND
+    // ==========================================================================
+    async function handleFormSubmit(event) {
+      event.preventDefault();
+      
+      const submitBtn = document.getElementById('submitBtn');
+      const submitBtnText = document.getElementById('submitBtnText');
+      const successNotification = document.getElementById('formNotification');
+      const errorNotification = document.getElementById('formErrorNotification');
+      
+      successNotification.style.display = 'none';
+      errorNotification.style.display = 'none';
+
+      // 1. Gather form values
+      const payload = {
+        name: document.getElementById('senderName').value.trim(),
+        email: document.getElementById('senderEmail').value.trim(),
+        inquiry_type: document.getElementById('inquiryType').value,
+        message: document.getElementById('messageText').value.trim(),
+        website_url_hp: document.getElementById('websiteUrlHp').value || null
+      };
+
+      // 2. Client-side state transition
+      submitBtn.disabled = true;
+      submitBtnText.textContent = "Dispatched to FastAPI Backend...";
+
+      try {
+        const response = await fetch(`${API_BASE_URL}/contact`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify(payload)
+        });
+
+        const result = await response.json();
+
+        if (response.ok && result.status === 'success') {
+          // Success Feedback
+          successNotification.innerHTML = `
+            <strong>[ TRANSMISSION CONFIRMED ]</strong><br />
+            ${escapeHtml(result.message)}<br />
+            <span style="font-size:0.72rem; color:#86efac;">INQUIRY ID: ${escapeHtml(result.inquiry_id)}</span>
+          `;
+          successNotification.style.display = 'block';
+          document.getElementById('contactForm').reset();
+          showToast('Inquiry logged & email dispatched.');
+        } else {
+          // Error Feedback from API
+          const errorMsg = result.detail || 'Failed to dispatch inquiry. Please check your connection.';
+          errorNotification.textContent = `[ ERROR ]: ${errorMsg}`;
+          errorNotification.style.display = 'block';
+          showToast('Failed to dispatch inquiry.');
+        }
+      } catch (err) {
+        // Network / Server Offline Fallback
+        console.error('Contact Form Error:', err);
+        errorNotification.innerHTML = `
+          [ NOTICE ]: FastAPI backend not reachable. You can also text Franklin directly via WhatsApp: 
+          <a href="https://wa.me/254725486708" target="_blank" style="color:#ffffff; text-decoration:underline;">+254 725 486 708</a> 
+          or email <a href="mailto:brookthuku@gmail.com" style="color:#ffffff; text-decoration:underline;">brookthuku@gmail.com</a>.
+        `;
+        errorNotification.style.display = 'block';
+        showToast('Backend offline. Use WhatsApp or direct email.');
+      } finally {
+        submitBtn.disabled = false;
+        submitBtnText.textContent = "Dispatch Transmission";
+      }
+    }
+
+    async function checkBackendHealth() {
+      try {
+        const res = await fetch('http://127.0.0.1:8000/health');
+        if (res.ok) {
+          updateApiStatus(true);
+        } else {
+          updateApiStatus(false);
+        }
+      } catch (e) {
+        updateApiStatus(false);
+      }
+    }
+
+    function updateApiStatus(isOnline) {
+      const badge = document.getElementById('apiStatusBadge');
+      const text = document.getElementById('apiStatusText');
+      if (isOnline) {
+        badge.classList.add('connected');
+        text.textContent = 'FASTAPI // LIVE';
+      } else {
+        badge.classList.remove('connected');
+        text.textContent = 'FASTAPI // LOCAL DB';
+      }
+    }
+
+    const mobileToggle = document.getElementById('mobileToggle');
+    const mobileMenu = document.getElementById('mobileMenu');
+    mobileToggle.addEventListener('click', () => {
+      mobileMenu.classList.toggle('active');
+    });
+    document.querySelectorAll('.mobile-nav-link').forEach(l => {
+      l.addEventListener('click', () => mobileMenu.classList.remove('active'));
+    });
+
+    function toggleFaq(button) {
+      const item = button.parentElement;
+      const isActive = item.classList.contains('active');
+      document.querySelectorAll('.faq-item').forEach(el => el.classList.remove('active'));
+      if (!isActive) item.classList.add('active');
+    }
+
+    const terminalLogs = {
+      stack: `Executing query: get_tech_stack()<br />
+        → Backends: Python (FastAPI), Async SQLAlchemy 2.0, Node.js (TypeScript), Go<br />
+        → Databases: PostgreSQL (pgvector), Redis (Token buckets, Caching), SQLite<br />
+        → Security: OWASP Top 10 Hardening, JWT/OAuth2, Zero-Trust Architecture<br />
+        <span style="color:#4ade80;">[QUERY 200 OK] Stack parsed successfully.</span>`,
+      
+      philosophy: `Executing query: get_philosophy()<br />
+        → "Learn by building." No passive certificates.<br />
+        → Turn theoretical computer technology concepts into robust, deployable architectures.<br />
+        <span style="color:#4ade80;">[STATUS] Zero-Bloat Execution.</span>`,
+      
+      availability: `Executing query: check_availability()<br />
+        → Full-Time Software Engineering Roles: <span class="term-tag">OPEN</span><br />
+        → High-Ticket Client Contracts: <span class="term-tag">OPEN (Max 2 slots)</span><br />
+        → Response Latency: &lt; 12 hours<br />
+        <span style="color:#4ade80;">[DISPATCH] Ready for communications.</span>`,
+      
+      contact: `Executing query: get_contact_info()<br />
+        → Engineer: Franklin Thuku (Juja, Kenya)<br />
+        → WhatsApp / Phone: +254 725 486 708<br />
+        → Email: brookthuku@gmail.com<br />
+        <span style="color:#4ade80;">[CHANNELS ONLINE] Multi-channel direct reach active.</span>`
+    };
+
+    function runTermCommand(key) {
+      const dynamicLine = document.getElementById('terminalDynamicLine');
+      if (terminalLogs[key]) {
+        dynamicLine.innerHTML = terminalLogs[key];
+      }
+    }
+
+    function copyToClipboard(text, message) {
+      navigator.clipboard.writeText(text).then(() => {
+        showToast(message || 'Copied to clipboard');
+      }).catch(() => {
+        showToast('Direct copy failed.');
+      });
+    }
+
+    function showToast(message) {
+      const toast = document.getElementById('toast');
+      toast.textContent = message;
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 3000);
+    }
+
+    function updateSystemTime() {
+      const options = { timeZone: 'Africa/Nairobi', hour12: false, hour: '2-digit', minute: '2-digit', second: '2-digit' };
+      const formatter = new Intl.DateTimeFormat([], options);
+      const eatString = formatter.format(new Date()) + ' EAT';
+      const timeElement = document.getElementById('eatTime');
+      if (timeElement) timeElement.textContent = eatString;
+    }
+
+    function escapeHtml(str) {
+      if (!str) return '';
+      return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
+    }
+
+    // Email Compose Modal Handlers
+    function openEmailCompose() {
+      document.getElementById('composeName').value = '';
+      document.getElementById('composeEmail').value = '';
+      document.getElementById('composeInquiryType').value = 'General Inquiry';
+      document.getElementById('composeMessage').value = '';
+      document.getElementById('composeSuccess').style.display = 'none';
+      document.getElementById('composeError').style.display = 'none';
+      const modal = document.getElementById('emailModal');
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeEmailCompose() {
+      const modal = document.getElementById('emailModal');
+      modal.classList.remove('active');
+      document.body.style.overflow = 'auto';
+    }
+
+    function closeEmailComposeOutside(event) {
+      if (event.target === document.getElementById('emailModal')) {
+        closeEmailCompose();
+      }
+    }
+
+    async function submitComposeForm(event) {
+      event.preventDefault();
+      const sendBtn = document.getElementById('composeSendBtn');
+      const successEl = document.getElementById('composeSuccess');
+      const errorEl = document.getElementById('composeError');
+
+      const payload = {
+        name: document.getElementById('composeName').value.trim(),
+        email: document.getElementById('composeEmail').value.trim(),
+        inquiry_type: document.getElementById('composeInquiryType').value,
+        message: document.getElementById('composeMessage').value.trim(),
+        website_url_hp: document.getElementById('composeHp').value || null
+      };
+
+      sendBtn.disabled = true;
+      sendBtn.textContent = 'Sending...';
+      successEl.style.display = 'none';
+      errorEl.style.display = 'none';
+
+      try {
+        const res = await fetch(`${API_BASE_URL}/contact`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+
+        const result = await res.json();
+        if (res.ok && result.status === 'success') {
+          successEl.innerHTML = `<strong>[ SENT ]</strong><br/>${escapeHtml(result.message)}<br/><span style="font-size:0.72rem; color:#86efac;">INQUIRY ID: ${escapeHtml(result.inquiry_id)}</span>`;
+          successEl.style.display = 'block';
+          showToast('Inquiry sent — check your inbox for replies.');
+          // clear form after brief delay and close
+          setTimeout(() => {
+            closeEmailCompose();
+          }, 1500);
+        } else {
+          const msg = (result && result.detail) ? result.detail : 'Failed to send. Please try again later.';
+          errorEl.textContent = `[ ERROR ]: ${msg}`;
+          errorEl.style.display = 'block';
+        }
+      } catch (err) {
+        console.error('Compose send error:', err);
+        errorEl.textContent = '[ ERROR ]: Network error or backend offline.';
+        errorEl.style.display = 'block';
+      } finally {
+        sendBtn.disabled = false;
+        sendBtn.textContent = 'Send';
+      }
+    }
+  </script>
+</body>
+</html>

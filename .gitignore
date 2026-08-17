@@ -1,0 +1,18 @@
+# Environment files
+backend/.env
+.env
+
+# Database files
+backend/portfolio.db
+*.db
+*.sqlite3
+
+# Python caches
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Operating system files
+.DS_Store
+Thumbs.db
